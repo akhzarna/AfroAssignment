@@ -74,9 +74,8 @@ export default class App extends Component<Props> {
   newFunction(){
 
     Alert.alert('str = ' + this.state.bookArray[2]);
-
     this.setState({newVar:1});
-    
+
   }
 
   render() {
