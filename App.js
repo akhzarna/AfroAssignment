@@ -9,16 +9,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Alert,AsyncStorage} from 'react-native';
 
-
-
-
 var flag = 20;
 var muzammil = [12,23,34,12,45,56];
-
-
-
-
-
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -48,20 +40,54 @@ export default class App extends Component<Props> {
   }
 
 
-  componentWillMount() {
-    // console.log('componentWillMount called.');
-   // Alert.alert('Will Mount');
 
-  }
 
   componentDidMount() {
     // console.log('componentDidMount called.');
     //Alert.alert('Did Mount');
+
+
+
+AsyncStorage.getItem("login").then((value) => {
+
+if (value == null) {
+
+
+
+}else{
+
+}
+
+}
+).done();
+
+AsyncStorage.getItem("password").then((value) => {
+
+if (value == null) {
+
+}else{
+
+}
+
+}
+).done();
+
+
+    AsyncStorage.setItem('login', 'abc');
+    AsyncStorage.setItem('password', '123');
+
     this.yasirFunction();
 
 
   }
 
+
+
+  componentWillMount() {
+    // console.log('componentWillMount called.');
+    Alert.alert('Will Mount = ' + muzammil[3]);
+
+  }
 
   yasirFunction(){
 
@@ -87,9 +113,6 @@ export default class App extends Component<Props> {
       </View>
     );
   }
-
-
-
 
 
 }
