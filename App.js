@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Alert,AsyncStorage} from 'react-native';
+import {Platform, StyleSheet, Text, View, Alert,AsyncStorage, Button} from 'react-native';
 
 var flag = 20;
 var muzammil = [12,23,34,12,45,56];
@@ -25,39 +25,32 @@ export default class App extends Component<Props> {
   // Read from the given Link
   // https://aboutreact.com/react-native-application-life-cycle-of/
 
-
   constructor() {
     super();
-
-  //  Alert.alert('Check Constructor is calling');
 
     this.state={
         bookArray:[56,78,90,98,100],
         newVar:'0'
       }
-
-
   }
 
-
-
-
   componentDidMount() {
+
+
+    flag = 80;
+
+    this.setState({newVar:20});
+
     // console.log('componentDidMount called.');
-    //Alert.alert('Did Mount');
 
+//  this.setState({newVar:1});
 
+  // Alert.alert('Did Mount' + this.state.newVar);
 
-AsyncStorage.getItem("login").then((value) => {
-
-if (value == null) {
-
-
-
-}else{
-
-}
-
+  AsyncStorage.getItem("login").then((value) => {
+  if (value == null) {
+  }else{
+  }
 }
 ).done();
 
@@ -72,44 +65,82 @@ if (value == null) {
 }
 ).done();
 
-
     AsyncStorage.setItem('login', 'abc');
     AsyncStorage.setItem('password', '123');
-
     this.yasirFunction();
-
-
   }
 
 
 
   componentWillMount() {
-    // console.log('componentWillMount called.');
-    Alert.alert('Will Mount = ' + muzammil[3]);
 
+
+    flag = 50;
+
+
+    // console.log('componentWillMount called.');
+    // Alert.alert('Will Mount = ');
   }
 
+
   yasirFunction(){
-
-    Alert.alert ('Yasir Function');
-
+    // Alert.alert ('Yasir Function');
     this.newFunction();
-
   }
 
   newFunction(){
-
-    Alert.alert('str = ' + this.state.bookArray[2]);
-    this.setState({newVar:1});
-
+    // Alert.alert('str = ' + this.state.bookArray[2]);
+    // this.setState({newVar:1});
   }
+
+    componentWillReceiveProps(nextProp) {
+      // Alert.alert('componentWillReceiveProps');
+      console.log('componentWillReceiveProps called.', nextProp);
+    }
+
+    // Called 1
+    shouldComponentUpdate(nextProp, nextState) {
+      // Alert.alert('shouldComponentUpdate');
+      console.log('shouldComponentUpdate called.');
+      return true;
+    }
+
+    // Called 2
+    componentWillUpdate(nextProp, nextState) {
+      // Alert.alert('componentWillUpdate');
+      console.log('componentWillUpdate called.');
+    }
+
+    componentDidUpdate(prevProp, prevState) {
+      // Alert.alert('componentDidUpdate');
+      console.log('componentDidUpdate called.');
+    }
+
+    componentWillUnmount() {
+      Alert.alert('componentWillUnmount');
+      console.log('componentWillUnmount called.');
+    }
+
+    componentDidCatch(error, info) {
+      Alert.alert('componentDidCatch');
+      console.log('componentDidCatch called.');
+    }
+
+
+
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.welcome}> {flag} </Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
+
+        <Button
+          onPress={this._onForward}
+          title="Tap me to load the next scene"
+        />
+
       </View>
     );
   }
