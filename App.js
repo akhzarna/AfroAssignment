@@ -7,7 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Alert,AsyncStorage, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Alert,AsyncStorage, Button,
+        FlatList, TouchableOpacity
+
+        } from 'react-native';
 
 var flag = 20;
 var muzammil = [12,23,34,12,45,56];
@@ -29,16 +32,14 @@ export default class App extends Component<Props> {
     super();
 
     this.state={
-        bookArray:[56,78,90,98,100],
+        bookArray:['hasnain','hasan','ABC'],
         newVar:'0'
       }
   }
 
   componentDidMount() {
 
-
     flag = 80;
-
     this.setState({newVar:20});
 
     // console.log('componentDidMount called.');
@@ -128,41 +129,95 @@ if (value == null) {
 
 
 
+// callSomeFunction(index){
+//
+//   Alert.alert('Hello '+ this.state.bookArray[index]);
+//
+// }
+
+
+  //
+  // wordSelected(index){
+  //
+  //   Alert.alert('Test is = '+index);
+  //
+  // }
+
+
+
+
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}> {flag} </Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
 
-        <Button
-          onPress={this._onForward}
-          title="Tap me to load the next scene"
-        />
+  <View style={styles.container}>
 
-      </View>
+  <View style={styles.viewStyleOne}>
+    <Text style={styles.textStyle}> ABC </Text>
+  </View>
+
+  <View style={styles.viewStyleTwo}>
+    <Text style={styles.textStyle}> XYZ </Text>
+  </View>
+
+  </View>
+
     );
   }
+
 
 
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+
+  container:{
+    backgroundColor:'#4286f4',
+    flex:1,
+    flexDirection:'row',
+    // justifyContent: 'center',
+    // alignItems:'center'
+
+    // justifyContent: 'flex-end',
+    // alignItems:'flex-start'
+
+    },
+
+  textStyle:{
+    textAlign:'center'
+  },
+
+  viewStyleOne: {
+    width:40,
+    height:200,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignItems:'center',
+    backgroundColor:'red',
+    flex:500,
+    // flexGrow: 1,
+    // alignSelf: 'flex-start',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+
+  viewStyleTwo: {
+    width:40,
+    height:200,
+    justifyContent: 'center',
+    alignItems:'center',
+    backgroundColor:'#b642f4',
+    flex:500,
+    // flexGrow: 1,
+    // alignSelf: 'flex-start',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  viewStyleThree: {
+    width:40,
+    height:40,
+    justifyContent: 'center',
+    alignItems:'center',
+    backgroundColor:'green',
+    flex:1,
+    // flexGrow: 1,
+    // alignSelf: 'flex-start',
   },
+
+
 });
